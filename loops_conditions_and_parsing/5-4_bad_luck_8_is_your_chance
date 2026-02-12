@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
-# script displaying " good luck" "Best School" "bad luck" 
-count=0
-while [$count -lt 10 ];
+# Script displaying "good luck", "Best School", "bad luck"
+
+count=1
+while [ "$count" -le 10 ]
 do
-    if [$count -eq 4 ]
-    then
-echo "bad luck"
-    elif [$count -eq 8 ]
-    then
-echo "good luck"
+    if [ "$count" -eq 4 ]; then
+        echo "bad luck"
+    elif [ "$count" -eq 8 ]; then
+        echo "good luck"
     else
-echo "Best School"
+        echo "Best School"
     fi
-    (( count=count+1))
+    count=$((count + 1))
 done
