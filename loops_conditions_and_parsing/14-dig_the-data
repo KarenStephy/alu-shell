@@ -3,18 +3,12 @@
 # Outputs OCCURRENCE_NUMBER IP HTTP_CODE ordered from highest to lowest
 
 awk '
-NF >= 9 {            # Ensure the line has at least 9 fields
-    ip = $1
-    code = $9
-    if (ip ~ /^[0-9.]+$/ && code ~ /^[0-9]{3}$/) {
-        count[ip " " code]++
-    }
+NF >= 9 && $1 ~ /^[0-9.]+$/ && $9 ~ /^[0-9]{3}$/ {
+    count[$1 " " $9]++
 }
 END {
-    for (key in count) {
+    for (key in count)
         printf "%d %s\n", count[key], key
-    }
 }
 ' | sort -nr
-
 
