@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # script displaying " good luck" "Best School" "bad luck" 
 count=0
-while [ $count -lt 10 ];
+while [$count -lt 10 ];
 do
-    if [ $count -eq 4 ]
+    if [$count -eq 4 ]
     then
 echo "bad luck"
-    elif [ $count -eq 8 ]
+    elif [$count -eq 8 ]
     then
 echo "good luck"
     else
