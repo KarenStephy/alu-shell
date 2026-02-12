@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
+# Script that groups visitors by IP and HTTP status code and displays the number of occurrences
 
 awk '
 {
-    key = $1 " " $9
-    count[key]++
+    count[$1 " " $9]++
 }
 END {
     for (k in count)
