@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-# Script that groups visitors by IP and HTTP status code and displays the number of occurrences
+# Script that groups visitors by IP and HTTP status code
+# and displays the number of occurrences ordered from highest to lowest
 
 awk '
-{
+NF >= 9 && $1 ~ /^[0-9.]+$/ && $9 ~ /^[0-9]{3}$/ {
     count[$1 " " $9]++
 }
 END {
-    for (k in count)
-        printf "%d %s\n", count[k], k
+    for (key in count) {
+        printf "%d %s\n", count[key], key
+    }
 }
 ' | sort -nr
 
