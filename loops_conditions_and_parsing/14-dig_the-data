@@ -2,13 +2,6 @@
 # Script that groups visitors by IP and HTTP status code
 # Outputs OCCURRENCE_NUMBER IP HTTP_CODE ordered from highest to lowest
 
-awk '
-NF >= 9 && $1 ~ /^[0-9.]+$/ && $9 ~ /^[0-9]{3}$/ {
-    count[$1 " " $9]++
-}
-END {
-    for (key in count)
-        printf "%d %s\n", count[key], key
-}
-' | sort -nr
+awk '{print $1 " " $9}' apache-access.log | sort | uniq -c | sort -rn
+
 
